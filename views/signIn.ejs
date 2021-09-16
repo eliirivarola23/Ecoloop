@@ -1,0 +1,22 @@
+<%- include("partials/head.ejs")%>
+<%- include("partials/header.ejs")%>
+      <!-- formulario para ingresar -->
+      <article>
+       <div class="form">
+           <form action="/signIn" method="POST">
+               <h2>Log In</h2>
+               <div class="input-container">
+                 <i class="fa fa-envelope icon"></i>
+                 <input class="input-field" type="text" placeholder="Email" name="eMail">
+               </div>
+             
+               <div class="input-container">
+                 <i class="fa fa-key icon"></i>
+                 <input class="input-field" type="password" placeholder="Password" name="password">
+               </div>
+               <button type="submit" class="btn">Submit</button>
+           </form>
+           </article>
+           <%- include("partials/footer.ejs")%>
+  </body>
+</html>

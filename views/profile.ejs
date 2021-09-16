@@ -1,0 +1,39 @@
+<%- include("partials/head.ejs")%>
+<%- include("partials/header.ejs") %>
+<section>
+    <article  class="construction">
+        <form class="form" action="/listItems" method="POST">
+            <h2>Post an article </h2>
+            <div class="input-container">
+              <label for="title"></label>
+              <input class="input-field" type="text" name="title" id="title" placeholder="Title" value="<%= edit ? edit.title : '' %>" required>
+            </div>
+            <div class="input-container">
+              <label for="image"></label>
+              <input class="input-field" type="text" name="image" id="image"  placeholder="Image of Article" value="<%= edit ? edit.image : '' %>" required>
+            </div>
+            <div class="input-container">
+              <label for="ubication"></label>
+              <input class="input-field" type="text" name="ubication" id="ubication" placeholder="Ubication" value="<%= edit ? edit.ubication : '' %>" required>
+            </div>
+            <div class="input-container">
+                <label for="category"></label>
+                <input class="input-field" type="text" name="category" id="category" placeholder="Category" value="<%= edit ? edit.category : '' %>" required>
+              </div>
+              <div class="input-container">
+                <label for="ubication"></label>
+                <input class="input-field" type="text" name="contact" id="contact" placeholder="Contact" value="<%= edit ? edit.contact : '' %>" required>
+              </div>
+              <div class="input-container">
+                <label for="description"></label>
+                <input class="input-field" type="text" name="description" id="description" placeholder="Description" value="<%= edit ? edit.description : '' %>">
+              </div>
+              <input type="hidden" name="_id" value="<%= edit ? edit._id : '' %>">
+             <input  class="btn2" type="submit" value="Submit">
+         </form>
+    </article>
+        <div class="articlePublished"></div>         
+ </section>
+ <%- include("partials/footer.ejs")%>
+</body>
+</html>

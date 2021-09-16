@@ -1,0 +1,68 @@
+<%- include("partials/head.ejs") %>
+<%- include("partials/header.ejs") %>
+
+
+<ul class="cards">         
+             <%  if(articles.length === 0) { %>
+             <h1>No hay articulos para mostrar</h1> 
+             <% } else { %>
+             <% articles.forEach(article => { %>
+                    <li>
+                      <div class="card">
+                        <div class="card__image" style="background-image: url('<%= article.image %>');" ></div>
+                        <div class="card__overlay">
+                          <div class="card__header">
+                            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                              <path />
+                            </svg>
+                            <img
+                              class="card__thumb"
+                              src="https://i.imgur.com/sjLMNDM.png"
+                              alt=""
+                            />
+                            <div class="card__header-text">
+                              <h3 class="card__title"> <%= article.title %></h3>
+                              <span class="card__status">kim Cattrall</span>
+                            </div>
+                            <% if(loggedIn) { %>
+                            <a href="/deleteArticle/<%=article._id%>"><div class="delete" style="background-image: url(/assets/borrar.svg);"></div></a>
+                            <a href="/editArticle/<%=article._id%>"><div class="delete" style="background-image: url(/assets/editar.svg);"></div></a>
+                            <% } %>
+                          </div>
+                          <p class="card__description"><%= article.description %></p>
+                          <p class="card__description">Contact: <%= article.contact %></p>
+                          <p class="card__description">Address: <%= article.ubication %></p>
+                        </div>
+                    </div>
+                    </li>
+                    
+                    <% }) %> 
+                    <%  } %> 
+                </ul>
+        
+      <div style="height: 150px; overflow: hidden">
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%"
+        >
+          <path
+            d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: #60e989"
+          ></path>
+        </svg>
+      </div>
+      <article>
+        <div class="moreAbout">
+          <p>
+            At ecoloop we believe that small actions can lead to big change.
+            Collectively - one rescued cupcake, one carrot or one bottle of
+            lotion at a time - we can create a more sustainable future where our
+            most precious resources will be shared and not thrown away. Join
+            Today!
+          </p>
+        </div>
+      </article>
+      <%- include("partials/footer.ejs") %>
+  </body>
+</html>

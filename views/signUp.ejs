@@ -1,0 +1,40 @@
+<%- include("partials/head.ejs")%>
+<%- include("partials/header.ejs")%>
+       <!-- formulario para registrarse -->
+       <article>
+        <div class="form">
+            <form action="/signUp" method="POST">
+                <h2>Register Form</h2>
+                <div class="input-container">
+                  <i class="fa fa-user icon"></i>
+                  <input class="input-field" type="text" placeholder="Name" name="names" required>
+                </div>
+              
+                <div class="input-container">
+                  <i class="fa fa-envelope icon"></i>
+                  <input class="input-field" type="text" placeholder="Email" name="eMail" required>
+                </div>
+              
+                <div class="input-container">
+                  <i class="fa fa-key icon"></i>
+                  <input class="input-field" type="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="input-container">
+                  <i class="fa fa-key icon"></i>
+                  <input class="input-field" type="text" placeholder="Image profile" name="urlImage" required>
+                </div>
+                <div class="input-container">
+                  <i class="fa fa-key icon"></i>
+                  <input class="input-field" type="text" placeholder="Tell us a little about yourself" name="description" required>
+                </div>
+                <div class="input-container">
+                  <i class="fa fa-envelope icon"></i>
+                  <input class="input-field" type="text" placeholder="Ubication" name="adress" required>
+                </div>
+              
+                <button type="submit" class="btn">Register</button>
+            </form>
+            </article>
+            <%- include("partials/footer.ejs")%>
+</body>
+</html>
