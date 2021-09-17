@@ -1,6 +1,6 @@
 <%- include("partials/head.ejs")%>
 <%- include("partials/header.ejs") %>
-<section>
+<section class="contenedor">
     <article  class="construction">
         <form class="form" action="/listItems" method="POST">
             <h2>Post an article </h2>
@@ -29,7 +29,8 @@
                 <input class="input-field" type="text" name="description" id="description" placeholder="Description" value="<%= edit ? edit.description : '' %>">
               </div>
               <input type="hidden" name="_id" value="<%= edit ? edit._id : '' %>">
-             <input  class="btn2" type="submit" value="Submit">
+              <input type="hidden" name="userId" value="<%=user._id%>">
+             <input  class="btn2" type="submit" value="submit">
          </form>
     </article>
         <div class="articlePublished"></div>         

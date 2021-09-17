@@ -7,7 +7,9 @@ const ArticleSchema = new mongoose.Schema({
   ubication: { type: String},
   category: { type: String},
   contact: { type: String},
-  userId: { type: mongoose.Types.ObjectId, ref: "user"},
+  userId: {type: String},
+  // userId: { type: mongoose.Types.ObjectId, ref: "user"},
+
 });
 
 const Article = mongoose.model("article", ArticleSchema);

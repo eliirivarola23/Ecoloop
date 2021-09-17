@@ -4,6 +4,7 @@ const articleControllers = {
     home: (req, res) =>{
         res.render("index", {
             title: "Home",
+            error: null,
             loggedIn: req.session.loggedIn 
         })
     },
@@ -13,25 +14,31 @@ const articleControllers = {
         res.render("listItems", {
             title: "Articles",
             articles,
-            loggedIn: req.session.loggedIn 
+            error: null,
+            loggedIn: req.session.loggedIn,
+            user: req.session.user 
+ 
         })
+        // console.log(req.session.user)
       }catch(e) {
           console.log(e)
       }
     },
-    profile: (req, res) =>{
+    profile: async(req, res) =>{
         if(req.session.loggedIn) {
             res.render("profile", {
                 title: "Profile",
                 edit: false,
-                loggedIn: req.session.loggedIn 
-              
+                error: null,
+                loggedIn: req.session.loggedIn,
+                user: req.session.user 
             })
         } else {
             res.redirect("/")
         }
     },
     createArticle: async (req,res) => {
+        console.log(req.body)
         const {
             title,
             image,
@@ -39,7 +46,8 @@ const articleControllers = {
             ubication,
             category,
             contact,
-            _id
+            _id,
+            userId
         } = req.body
         let newArticle;
         if(!_id) {
@@ -50,6 +58,7 @@ const articleControllers = {
                ubication,
                category,
                contact,
+                userId
            })
         } else {
             newArticle = await Article.findOne({_id})
@@ -79,7 +88,8 @@ const articleControllers = {
             title: "Edit Article",
             error: null,
             edit: article,
-            loggedIn: req.session.loggedIn 
+            loggedIn: req.session.loggedIn,
+            user:  req.session.user  
         })
     }
 }

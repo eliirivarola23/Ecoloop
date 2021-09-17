@@ -5,11 +5,8 @@ const UserSchema = new mongoose.Schema({
   eMail: { type: String},
   urlImage: { type: String},
   description: { type: String},
-  adress: { type: String},
-  google: { type: Boolean,default: false},
+  address: { type: String},
   password: {type: String},
-  userId: { type: mongoose.Types.ObjectId, ref: "user"},
-
 });
 
 const User = mongoose.model("user", UserSchema);

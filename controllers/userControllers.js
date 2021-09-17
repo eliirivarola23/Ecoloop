@@ -4,21 +4,22 @@ const userControllers = {
   signUp: (req, res) => {
     res.render("signUp", {
       title: "Sign Up",
-      loggedIn: req.session.loggedIn 
+      loggedIn: req.session.loggedIn,
+      error: null
     });
   },
   createNewUser: async (req, res) => {
-    const { names, eMail, urlImage, description, adress, password } = req.body;
+    const { names, eMail, urlImage, description, address, password } = req.body;
     const passwordHash = bcryptjs.hashSync(password);
     let newUser = new User({
       names,
       eMail,
       urlImage,
       description,
-      adress,
+      address,
       password: passwordHash
     });
-    let userExist = await User.findOne({eMail: eMail });
+    let userExist = await User.findOne({eMail: eMail});
     try {
       if (userExist) {
         //   console.log(res)
@@ -26,8 +27,11 @@ const userControllers = {
         throw new Error("No se puede crear una cuenta con este mail");
       } else {
         let userRegistered = await newUser.save();
+        // console.log(userRegistered)
         console.log("Usuario nuevo")
-        res.redirect("/");
+        res.redirect("/")
+        req.session.loggedIn = true
+        userRegistered
       }
     } catch(e) {
         console.log(e)
@@ -40,7 +44,10 @@ const userControllers = {
   signIn: (req, res) => {
     res.render("signIn", {
       title: "Sign In",
-      loggedIn: req.session.loggedIn 
+      loggedIn: req.session.loggedIn,
+      user: req.session.user,
+      error: null
+
     });
   },
   logIn: async (req, res) => {
@@ -51,7 +58,15 @@ const userControllers = {
         let passMatch = bcryptjs.compareSync(password, userExist.password);
         if (!passMatch) throw new Error("Username and/or password incorrect!")
         req.session.loggedIn = true
+        req.session.user = {_id: userExist._id, urlImage: userExist.urlImage, names: userExist.names }
+        console.log(req.session)
+        // console.log(req)
         res.redirect('/')
+        // console.log(userExist)
+        //  res.render("profile", {
+        //   title: "Profile",
+        //   userExist
+        // })
         console.log("Bienvenido de nuevo");
     } catch (e) {
     console.log(e)

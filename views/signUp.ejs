@@ -1,39 +1,41 @@
 <%- include("partials/head.ejs")%>
 <%- include("partials/header.ejs")%>
-       <!-- formulario para registrarse -->
        <article>
         <div class="form">
+          
             <form action="/signUp" method="POST">
                 <h2>Register Form</h2>
+               <p> <%= error %></p>
                 <div class="input-container">
                   <i class="fa fa-user icon"></i>
-                  <input class="input-field" type="text" placeholder="Name" name="names" required>
+                  <input class="input-field" type="text" placeholder="Name" name="names" >
                 </div>
               
                 <div class="input-container">
                   <i class="fa fa-envelope icon"></i>
-                  <input class="input-field" type="text" placeholder="Email" name="eMail" required>
+                  <input class="input-field" type="text" placeholder="Email" name="eMail" >
                 </div>
               
                 <div class="input-container">
                   <i class="fa fa-key icon"></i>
-                  <input class="input-field" type="password" placeholder="Password" name="password" required>
+                  <input class="input-field" type="password" placeholder="Password" name="password" >
                 </div>
                 <div class="input-container">
                   <i class="fa fa-key icon"></i>
-                  <input class="input-field" type="text" placeholder="Image profile" name="urlImage" required>
+                  <!-- <input type="file" name="urlImage" value="image/*"> -->
+                  <input class="input-field" type="url" placeholder="Image profile" name="urlImage" >
                 </div>
                 <div class="input-container">
                   <i class="fa fa-key icon"></i>
-                  <input class="input-field" type="text" placeholder="Tell us a little about yourself" name="description" required>
+                  <input class="input-field" type="text" placeholder="Tell us a little about yourself" name="description" >
                 </div>
                 <div class="input-container">
                   <i class="fa fa-envelope icon"></i>
-                  <input class="input-field" type="text" placeholder="Ubication" name="adress" required>
+                  <input class="input-field" type="text" placeholder="Ubication" name="address" >
                 </div>
               
-                <button type="submit" class="btn">Register</button>
-            </form>
+                <button type="submit" class="btn">Submit</button>
+              </form>
             </article>
             <%- include("partials/footer.ejs")%>
 </body>
