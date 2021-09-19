@@ -32,10 +32,11 @@ const validator = (req, res, next) => {
     next();
   } else {
     //   validation.error.details.map(error => {
+      // console.log(validation.error.details[0])
         res.render("signUp", {
             title: "Sign Up",
             loggedIn: req.session.loggedIn, 
-            error: validation.error.details[0].message,
+            error: validation.error.details[0],
         })
 
     //   })

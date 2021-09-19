@@ -1,21 +1,22 @@
 <%- include("partials/head.ejs")%>
 <%- include("partials/header.ejs")%>
-      <article>
-       <div class="form">
-           <form action="/signIn" method="POST">
-               <h2>Log In</h2>
-               <div class="input-container">
-                 <i class="fa fa-envelope icon"></i>
-                 <input class="input-field" type="text" placeholder="Email" name="eMail" required>
-               </div>
-             
-               <div class="input-container">
-                 <i class="fa fa-key icon"></i>
-                 <input class="input-field" type="password" placeholder="Password" name="password" required>
-               </div>
-               <button type="submit" class="btn">Submit</button>
-           </form>
-           </article>
-           <%- include("partials/footer.ejs")%>
-  </body>
+<article>
+  <div class="form">
+    <form action="/signIn" method="POST">
+      <h2 class="formh2">Log In</h2>
+      <div class="input-container">
+        <i class="fa fa-envelope icon"></i>
+        <input class="input-field" type="text" placeholder="Email" name="eMail" required>
+      </div>
+      <div class="input-container">
+        <i class="fa fa-key icon"></i>
+        <input class="input-field" type="password" placeholder="Password" name="password" required>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+      <p class="formh2">Don't have an account? <a href="/signUp">Sing Up</a></p>
+    </form>
+</article>
+<%- include("partials/footer.ejs")%>
+</body>
+
 </html>
