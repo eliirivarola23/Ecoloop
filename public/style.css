@@ -104,7 +104,10 @@ article .moreAbout {
 article .moreAbout {
   padding-top: 5rem;
   text-align: center;
+  display: flex;
+  width: 100vw;
   font-size: 1rem;
+  justify-content: center;
 }
 article div h2 {
   margin-bottom: 2rem;
