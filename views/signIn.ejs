@@ -12,8 +12,9 @@
         <i class="fa fa-key icon"></i>
         <input class="input-field" type="password" placeholder="Password" name="password" required>
       </div>
-      <button type="submit" class="btn">Submit</button>
-      <p class="formh2">Don't have an account? <a href="/signUp">Sing Up</a></p>
+      <% error = !error ? "Username and/or password incorrect" : "Welcome back" %>
+      <button type="submit" onclick="Swal.fire({title:'<%= error %>', showConfirmButton: false})" class="btn">Submit</button>
+      <p class="formh2">Don't have an account? <a href="/signUp">Sing Up</a></p> 
     </form>
 </article>
 <%- include("partials/footer.ejs")%>

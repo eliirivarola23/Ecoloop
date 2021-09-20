@@ -2,7 +2,7 @@
 <%- include("partials/header.ejs") %>
 <section class="contenedor">
   <article class="construction">
-    <form class="form" action="/listItems" method="POST">
+    <form class="form2" action="/listItems" method="POST">
       <% if(title.includes('Edit Article')) {%>
       <h2 class="formh2">Edit the article </h2>
       <%  } else {%>
@@ -15,7 +15,7 @@
       </div>
       <div class="input-container">
         <label for="image"></label>
-        <input class="input-field" type="text" name="image" id="image" placeholder="Image of Article"
+        <input class="input-field" type="text" name="image" id="image" placeholder="image url for the article"
           value="<%= edit ? edit.image : '' %>" required>
       </div>
       <div class="input-container">
@@ -25,7 +25,7 @@
       </div>
       <div class="input-container">
         <label for="category"></label>
-        <input class="input-field" type="text" name="category" id="category" placeholder="Category"
+        <input class="input-field" type="text" name="category" id="category" placeholder="Category: Food / Article"
           value="<%= edit ? edit.category : '' %>" required>
       </div>
       <div class="input-container">
@@ -35,7 +35,7 @@
       </div>
       <div class="input-container">
         <label for="description"></label>
-        <input class="input-field" type="text" name="description" id="description" placeholder="Description"
+        <input class="input-field" type="text" name="description" id="description" placeholder="Description: quality, quantity, expiration date"
           value="<%= edit ? edit.description : '' %>">
       </div>
       <input type="hidden" name="_id" value="<%= edit ? edit._id : '' %>">
@@ -44,14 +44,39 @@
       <input type="hidden" name="userUrlImage" value="<%=user.urlImage%>">
       <% if(title.includes('Edit Article')) {%>
       <div class="editBtn">
+        <% error = !error ? message : error %>
+        <% var icon = message ? 'success' : 'warning' %>
         <button class="btn2"><a href="/listItems">Cancel</a></button>
-        <input class="btn2" type="submit" value="Confirm">
+        <input class="btn2" onclick="Swal.fire({position: 'center',title:'<%= error %>', showConfirmButton: false, toast: true, imageUrl: '/assets/<%=icon%>.gif', imageWidth: 80, timer: 3000,})" type="submit" value="Confirm">
       </div>
       <%  } else {%>
       <input class="btn2" type="submit" value="submit">
       <% } %>
     </form>
-    <div class="image" style="background-image: url(/assets/post.png);"></div>
+    <div class="image2">
+      <div class="image3">  
+          <img src="/assets/title.png" alt="number-one" width="100rem">
+      <div class="hijo">
+          <p>Give it a title and describe the product to be published</p>
+          </div>
+          </div>
+  <div class="image3"> 
+      <img src="/assets/urlImage.png" alt="number-one" width="100rem">
+      <div class="hijo">
+      <p>Upload a url of the product image</p>
+  </div></div>
+  <div class="image3"> 
+    <img src="/assets/articles.png" alt="number-one" width="100rem">
+    <div class="hijo">
+    <p>Enter the category, it can be Food or an Item.</p>
+</div></div>
+<div class="image3"> 
+  <img src="/assets/contact.png" alt="number-one" width="100rem">
+  <div class="hijo">
+  <p>And finally, choose the way to contact you.</p>
+</div></div>
+   
+  </div>
   </article>
   <div class="articlePublished"></div>
 </section>

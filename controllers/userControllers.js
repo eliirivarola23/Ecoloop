@@ -6,6 +6,7 @@ const userControllers = {
 			res.render("signUp", {
 				title: "Sign Up",
 				loggedIn: req.session.loggedIn,
+				user: req.session.user,
 				error: null,
 			});
 		} else {
@@ -35,25 +36,17 @@ const userControllers = {
 				eMail: eMail
 			});
 			if (userExist) {
-				// res.redirect("/signUp");
 				throw new Error("Email already exists");
 			} else {
-				let userRegistered = await newUser.save();
-				console.log("Usuario nuevo");
-				req.session.loggedIn = true,
-				// res.redirect("/")
-				res.render("signUp", {
-					title: "Sign Up",
-					loggedIn: req.session.loggedIn,
-				});
+				let userRegistered = await newUser.save()
+				res.redirect("/signIn")
 			}
 		} catch (error) {
-			// res.redirect("/signUp");
 			res.render("signUp", {
 				title: "Sign Up",
-				error: error[0],
+				loggedIn: req.session.loggedIn,
+				error: error.message,
 			});
-			console.log(error)
 		}
 	},
 	signIn: (req, res) => {
@@ -63,6 +56,7 @@ const userControllers = {
 				loggedIn: req.session.loggedIn,
 				user: req.session.user,
 				error: null,
+				message: null
 			});
 		} else {
 			res.redirect("/");
@@ -77,22 +71,23 @@ const userControllers = {
 			let userExist = await User.findOne({
 				eMail: eMail
 			});
-			if (!userExist) throw new Error("Username and/or password incorrect!");
+			if (!userExist) throw new Error
 			let passMatch = bcryptjs.compareSync(password, userExist.password);
-			if (!passMatch) throw new Error("Username and/or password incorrect!");
+			if (!passMatch) throw new Error;
 			req.session.loggedIn = true;
 			req.session.user = {
 				_id: userExist._id,
 				urlImage: userExist.urlImage,
 				names: userExist.names,
 			};
-			res.redirect("/");
-			console.log("Bienvenido de nuevo");
+			res.redirect("/")
 		} catch (e) {
-			res.redirect("/signIn");
-			res.render("signUp", {
-				title: "Sign Up",
+			res.render("signIn", {
+				title: "Sign In",
+				loggedIn: req.session.loggedIn,
+				user: req.session.user,
 				error: e,
+				message: null
 			});
 		}
 	},

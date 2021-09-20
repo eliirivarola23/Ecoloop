@@ -22,10 +22,10 @@
                     <%  if(loggedIn) {%>
                     <% if(article.userId ==user._id) { %>
                     <a href="/deleteArticle/<%=article._id%>">
-                        <div class="delete" style="background-image: url(/assets/borrar.svg);"></div>
+                        <div class="delete" style="background-image: url(/assets/borrar.svg);" onclick="Swal.fire({position: 'top',title:'Eliminado con éxito', showConfirmButton: false, toast: true,})"></div>
                     </a>
                     <a href="/editArticle/<%=article._id%>">
-                        <div class="delete" style="background-image: url(/assets/editar.svg);"></div>
+                        <div class="delete" style="background-image: url(/assets/editar.svg);" ></div>
                     </a>
                     <%  } %>
                     <%  } %>

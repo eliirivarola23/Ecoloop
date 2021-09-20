@@ -6,28 +6,14 @@
   </div>
   <nav>
     <a class="<%= title.includes('Home') ? 'active' : null %>" href="/">Home</a>
-    <a
-      class="<%= title.includes('Articles') ? 'active' : null %>"
-      href="/listItems"
-      >Articles</a
-    >
+    <a class="<%= title.includes('Articles') ? 'active' : null %>" href="/listItems">Articles</a>
 
     <% if(loggedIn) { %>
-    <a
-      class="<%= title.includes('Profile') ? 'active' : null %>"
-      href="/profile"
-      >Profile</a
-    >
-    <a class="<%= title.includes('logOut') ? 'active' : null %>" href="/logOut"
-      >Log Out</a
-    >
+    <a class="<%= title.includes('Profile') ? 'active' : null %>" href="/profile">Profile</a>
+    <a class="<%= title.includes('logOut') ? 'active' : null %>" href="/logOut">Log Out</a>
     <% } else { %>
-    <a class="<%= title.includes('Sign In') ? 'active' : null %>" href="/signIn"
-      >Sign In</a
-    >
-    <a class="<%= title.includes('Sign Up') ? 'active' : null %>" href="/signUp"
-      >Sign Up</a
-    >
+    <a class="<%= title.includes('Sign In') ? 'active' : null %>" href="/signIn">Sign In</a>
+    <a class="<%= title.includes('Sign Up') ? 'active' : null %>" href="/signUp">Sign Up</a>
     <% } %>
   </nav>
 </header>

@@ -3,6 +3,7 @@ const articleControllers = {
 	home: (req, res) => {
 		res.render("index", {
 			title: "Home",
+			message: null,
 			error: null,
 			loggedIn: req.session.loggedIn,
 		});
@@ -20,7 +21,7 @@ const articleControllers = {
 		} catch (e) {
 			res.redirect("/listItems");
 			res.render("listItems", {
-				title: "Article",
+				title: "Articles",
 				error: e,
 			});
 		}
@@ -81,10 +82,13 @@ const articleControllers = {
 		}
 		try {
 			await newArticle.save();
-			console.log("¡Un nuevo Articulo!");
 			res.redirect("/listItems");
 		} catch (e) {
-			console.log(e);
+			res.render("profile", {
+				title: "Profile",
+				message: null,
+				error: e.message,
+			});
 		}
 	},
 	deleteArticle: async (req, res) => {
@@ -92,20 +96,11 @@ const articleControllers = {
 			let article = await Article.findOneAndDelete({
 				_id: req.params._id
 			});
-			if (article) {
-				res.render("listItems", {
-					title: "Article",
-					loggedIn: req.session.loggedIn,
-					message: "Item deleted successfully",
-				});
-			} else {
-				throw new Error();
-			}
+			res.redirect("/listItems")
 		} catch (e) {
-			res.redirect("/listItems");
-			res.render("profile", {
-				title: "Article",
-				error: e,
+			res.render("listItems", {
+				title: "Articles",
+				error: "There was an error, please try again later",
 			});
 		}
 	},
@@ -118,18 +113,22 @@ const articleControllers = {
 				res.render("profile", {
 					title: "Edit Article",
 					error: null,
+					message: "Edited successfully",
 					edit: article,
 					loggedIn: req.session.loggedIn,
 					user: req.session.user,
 				});
 			} else {
-				throw new Error();
+				throw new Error("There was a problem, try again");
 			}
 		} catch (e) {
-			res.redirect("/listItems");
 			res.render("profile", {
 				title: "Edit Article",
-				error: e,
+				loggedIn: req.session.loggedIn,
+				user: req.session.user,
+				edit: null,
+				message: null,
+				error: e.message,
 			});
 		}
 	},

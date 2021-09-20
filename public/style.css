@@ -99,7 +99,7 @@ article .moreAbout {
   width: 50%;
   height: 18rem;
   justify-content: center;
-  margin-left: 4.5rem;
+  margin: 0 2.5rem;
 }
 article .moreAbout {
   padding-top: 5rem;
@@ -112,12 +112,20 @@ article div h2 {
 .image2 {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin-left: 4.5rem;
 }
 .image3 {
   display: flex;
   align-items: start;
+}
+.image3 {
+  border-bottom: 1px solid white;
+  margin: .2rem;
+  display: flex;
+  align-items: start;
+  align-items: center;
+}
+.image3 img {
+  width: 5rem;
 }
 .image2 .hijo {
   margin: 1rem;
@@ -320,12 +328,16 @@ form {
   align-items: center;
   justify-content: center;
 }
-.form {
-  /* width: 100vw; */
+.form, .form2 {
+  width: 100vw;
   min-height: 30rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.form2 {
+  width: 39vw;
 }
 /* Style the input container */
 .input-container {
@@ -347,7 +359,7 @@ form {
 
 /* Style the input fields */
 .input-field {
-  width: 63%;
+  width: 100%;
   padding: 11px;
   outline: none;
   border: none;
@@ -361,7 +373,7 @@ form {
 
 /* Set a style for the submit button */
 .editBtn {
-  width: 65%;
+  width: 100%;
   display: flex;
 }
 .editBtn .btn2 a {
@@ -382,11 +394,11 @@ form {
   border-radius: 2rem;
   border: none;
   cursor: pointer;
-  width: 78%;
+  width: 100%;
   opacity: 0.9;
 }
 .btn2 {
-  width: 63%;
+  width: 100%;
   margin-left: 1rem;
 }
 
@@ -412,7 +424,7 @@ form {
 
 section .construction {
   display: flex;
-  /* justify-content: center; */
+  justify-content: space-around;
   align-items: center;
 }
 

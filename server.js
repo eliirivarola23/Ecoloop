@@ -10,7 +10,6 @@ const store = new mongo ({
 const router = require("./routes/index")
 require("./config/database")
 const app = express()
-//va a buscar las vistas en la carpeta views, y va a buscar arch de js
 app.use(cors()) 
 app.set("view engine","ejs") //motor de plantilla (view engine)
 app.use(express.static("public"))
@@ -22,4 +21,4 @@ app.use(session ({
     store: store
 }))
 app.use("/", router)
-app.listen(process.env.PORT || 4000, process.env.HOST || '0.0.0.0', () => console.log("Server in port :)"))
+app.listen(process.env.PORT || 4000, process.env.HOST || '0.0.0.0', () => console.log("Server listening"))

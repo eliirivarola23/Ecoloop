@@ -2,9 +2,9 @@
 <%- include("partials/header.ejs")%>
 <article>
     <div class="form">
-        <form action="/signUp" method="POST" >
+        <form action="/signUp" method="POST">
             <h2 class="formh2">Register Form</h2>
-            <!-- <p class="error"><%= error %></p> -->
+            <p class="formh2"><%= error %></p>
             <div class="input-container">
                 <i class="fa fa-user icon"></i>
                 <input class="input-field" type="text" placeholder="Name" name="names">
@@ -12,16 +12,14 @@
             <div class="input-container">
                 <i class="fa fa-envelope icon"></i>
                 <input class="input-field" type="text" placeholder="Email" name="eMail">
-                <!-- <p class="error"><%= error %></p> -->
             </div>
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
                 <input class="input-field" type="password" placeholder="Password" name="password">
-                <!-- <p class="error"><%= error %></p> -->
             </div>
             <div class="input-container">
                 <i class="fa fa-file-image-o icon"></i>
-                <input class="input-field" type="url" placeholder="Image profile" name="urlImage">
+                <input class="input-field" type="text" placeholder="Image url for profile" name="urlImage">
             </div>
             <div class="input-container">
                 <i class="fa fa-comment-o icon"></i>
@@ -31,43 +29,11 @@
                 <i class="fa fa-map-marker icon"></i>
                 <input class="input-field" type="text" placeholder="Ubication" name="address">
             </div>
-            <button onclick="mostrar('<%= error %>')" class="btn">Submit</button>
+            <button type="submit" class="btn">Submit</button>
             <p class="formh2">Do you already have an account? <a href="/signUp">Sing In</a></p>
         </form>
 </article>
 <%- include("partials/footer.ejs")%>
-<script>
-const mostrar = (error) => {
-
-//  const mostrarErrores = (inputName) => {
-//     let errorToRender = errors.find((error) => error.path[0] === inputName)
-//     return (
-//       <p className="errorInputs" style={{ opacity: errorToRender ? "1" : "0" }}>
-//         {errorToRender ? errorToRender.message : "&nbsp;"}
-//       </p>
-//     )
-//   }
-}
-
-
-alertMessage = (message, type) => {
-    const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-        Toast.fire({
-        icon: 'warning' || type,
-        title: message
-        })    
-}
-</script>
 </body>
 
 </html>
